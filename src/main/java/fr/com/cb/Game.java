@@ -17,7 +17,7 @@ public class Game {
     }
 
     public static Optional<Game> build(String number) {
-        final String regex = "[0-9]+";
+        final String regex = "[0-9]{4}";
         return Optional.ofNullable(number)
                 .filter(n -> n.matches(regex))
                 .filter(n -> n.length() > 0)

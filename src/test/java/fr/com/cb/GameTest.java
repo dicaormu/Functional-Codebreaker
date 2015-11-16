@@ -28,6 +28,12 @@ public class GameTest {
 
 
     @org.junit.Test
+    public void should_not_init_game_when_long_number() throws Exception {
+        Optional<Game> maybeGame = build("12345");
+        assertFalse(maybeGame.isPresent());
+    }
+
+    @org.junit.Test
     public void should_init_game() throws Exception {
         Optional<Game> maybeGame = build("1234");
         assertTrue(maybeGame.isPresent());

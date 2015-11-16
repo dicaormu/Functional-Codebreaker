@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static java.lang.String.valueOf;
 import static java.util.stream.Collectors.joining;
 
 public class Game {
@@ -33,29 +32,13 @@ public class Game {
             char actualChar = number.charAt(i);
             State answerState = State.NO_MATCH;
             if (notSamePositionNorPresent(guessChar, map)) {
-                answerState = assignSymbol(number, guessChar, actualChar);
+                answerState = State.assignSymbol(number, guessChar, actualChar);
             }
             map.put(guessChar, answerState);
         }
         return map.values().stream().map(c -> c.toString())
                 .collect(joining());
     }
-
-    private State assignSymbol(String number, Character guessChar, Character actualChar) {
-        final boolean containsGuess = number.contains(valueOf(guessChar));
-        if (containsGuess)
-            return actualChar == guessChar ?
-                    State.EXACT_MATCH : State.SINGLE_MATCH;
-        else
-            return State.NO_MATCH;
-    }
-
-
-    private Boolean notSamePositionNorPresent(Character guessChar, Map<Character, State> map) {
-        final State currentStateValue = map.getOrDefault(guessChar, State.NO_MATCH);
-        return currentStateValue.equals(State.SINGLE_MATCH) || currentStateValue.equals(State.NO_MATCH);
-    }
-
 
     public boolean isWin() {
         return lastGuess != null && lastGuess.equals(number);
@@ -65,6 +48,10 @@ public class Game {
         return number;
     }
 
+    private Boolean notSamePositionNorPresent(Character guessChar, Map<Character, State> map) {
+        final State currentStateValue = map.getOrDefault(guessChar, State.NO_MATCH);
+        return currentStateValue.equals(State.SINGLE_MATCH) || currentStateValue.equals(State.NO_MATCH);
+    }
 
     public enum State {
         EXACT_MATCH('+'), SINGLE_MATCH('-'), NO_MATCH(' ');
@@ -73,6 +60,15 @@ public class Game {
 
         State(Character representation) {
             this.representation = representation;
+        }
+
+        public static State assignSymbol(String number, Character guessChar, Character actualChar) {
+            final boolean containsGuess = number.contains(guessChar.toString());
+            if (containsGuess)
+                return actualChar == guessChar ?
+                        EXACT_MATCH : SINGLE_MATCH;
+            else
+                return NO_MATCH;
         }
 
         public String toString() {

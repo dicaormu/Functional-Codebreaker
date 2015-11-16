@@ -12,7 +12,7 @@ public class Match {
 
     public String play(String number, CustomProcessor<String> moves) {
         game = Game.build(number).orElseThrow(IllegalStateException::new);
-        String matchFactor = Game.State.NO_MATCH.toString();
+        String matchFactor = "";
         while (!game.isWin() && moves.hasNext()) {
             String line = moves.nextLine();
             matchFactor = game.guessNumber(line);

@@ -1,4 +1,4 @@
-package fr.test.suppliers;
+package fr.com.strategy;
 
 @FunctionalInterface
 public interface CustomProcessor<T> {

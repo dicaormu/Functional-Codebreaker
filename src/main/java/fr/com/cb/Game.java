@@ -1,14 +1,12 @@
-package fr.test.cb;
+package fr.com.cb;
 
 
-import fr.test.suppliers.CustomProcessor;
+import fr.com.strategy.CustomProcessor;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static fr.test.cb.GameLogic.assingSymbol;
-import static fr.test.cb.GameLogic.notSamePositionNorPresent;
 import static java.util.stream.Collectors.joining;
 
 public class Game {
@@ -33,8 +31,8 @@ public class Game {
             char guessChar = guess.charAt(i);
             char actualChar = number.charAt(i);
             String answerState = CustomProcessor.FINALIZER;
-            if (notSamePositionNorPresent.test(guessChar, map)) {
-                answerState = assingSymbol.apply(number, guessChar, actualChar);
+            if (GameLogic.notSamePositionNorPresent.test(guessChar, map)) {
+                answerState = GameLogic.assingSymbol.apply(number, guessChar, actualChar);
             }
             map.put(guessChar, answerState);
         }

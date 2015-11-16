@@ -1,7 +1,7 @@
-package fr.test.cb;
+package fr.com.cb;
 
 
-import fr.test.suppliers.CustomProcessor;
+import fr.com.strategy.CustomProcessor;
 
 public class Match {
 

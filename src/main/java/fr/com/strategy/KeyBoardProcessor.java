@@ -1,4 +1,4 @@
-package fr.test.suppliers;
+package fr.com.strategy;
 
 import java.io.BufferedReader;
 import java.io.IOException;

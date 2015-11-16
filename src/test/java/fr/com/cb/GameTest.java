@@ -1,8 +1,10 @@
-package fr.test.cb;
+package fr.com.cb;
+
+import fr.com.cb.Game;
 
 import java.util.Optional;
 
-import static fr.test.cb.Game.build;
+import static fr.com.cb.Game.build;
 import static org.junit.Assert.*;
 
 

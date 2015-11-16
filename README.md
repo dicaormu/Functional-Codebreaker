@@ -45,8 +45,20 @@ $ mvn test
 ## How it works?
 The project contains a class 'fr.com.cb.Match'. This class contains a public method called 'play',which is in charge of receiving:
 
-- A string containing the number to find
+- A String containing the number to find
 - A CustomProcessor which is in charge of provide the 'guess'
 
-This method returns a string with the response of the last guess of the gamer.
+This method returns a String with the result (of + and -) of the last guessed number supplied by the CustomProcessor.
 
+### Make it run
+1. Create a CustomProcessor, there is one that provides a list in the "MatchTest" class, and one for the keyBoard in "fr.com.strategy.KeyBoardProcessor"
+2. Create an instance of the class 'fr.com.cb.Match', example:
+ ```
+   Match match = new Match();
+ ```
+3. Play to guess a number, p.e "1234":
+ ```
+match.play("1234", compute)
+ ```
+   
+Unit tests provide example data.

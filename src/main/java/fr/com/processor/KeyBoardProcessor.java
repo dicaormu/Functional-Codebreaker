@@ -1,6 +1,4 @@
-package fr.com.strategy;
-
-import fr.com.cb.Game;
+package fr.com.processor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +25,6 @@ public class KeyBoardProcessor implements CustomProcessor<String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return Game.State.NO_MATCH.toString();
+        return "";
     }
 }

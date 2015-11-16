@@ -1,6 +1,6 @@
 package fr.com.cb;
 
-import fr.com.strategy.CustomProcessor;
+import fr.com.processor.CustomProcessor;
 
 import java.util.Arrays;
 import java.util.List;

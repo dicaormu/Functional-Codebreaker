@@ -1,7 +1,7 @@
 package fr.com.cb;
 
 
-import fr.com.strategy.CustomProcessor;
+import fr.com.processor.CustomProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

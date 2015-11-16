@@ -1,7 +1,5 @@
 package fr.com.cb;
 
-import fr.com.cb.Game;
-
 import java.util.Optional;
 
 import static fr.com.cb.Game.build;
@@ -94,6 +92,7 @@ public class GameTest {
         String result = maybeGame.orElseThrow(IllegalStateException::new).guessNumber("1234");
         assertEquals(result, "++++");
     }
+
     @org.junit.Test
     public void should_return_reverse_entree() throws Exception {
         Optional<Game> maybeGame = build("1234");

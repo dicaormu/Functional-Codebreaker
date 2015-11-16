@@ -8,15 +8,20 @@ import java.io.InputStreamReader;
 public class KeyBoardProcessor implements CustomProcessor<String> {
 
     BufferedReader in;
+    String lastLine = " ";
 
     public KeyBoardProcessor() {
         in = new BufferedReader(new InputStreamReader(System.in));
     }
 
+    public Boolean hasNext() {
+        return lastLine != null && lastLine.length() > 0;
+    }
+
     @Override
     public String nextLine() {
         try {
-            return in.readLine();
+            return lastLine = in.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }

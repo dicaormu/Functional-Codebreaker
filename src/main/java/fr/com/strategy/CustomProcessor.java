@@ -1,11 +1,16 @@
 package fr.com.strategy;
 
-@FunctionalInterface
+
 public interface CustomProcessor<T> {
 
-    public static final String FINALIZER ="";
+    String FINALIZER = "";
+    String EXACT_MATCH="+";
+    String MATCH="-";
 
-    public T nextLine();
+
+    T nextLine();
+
+    Boolean hasNext();
 
 
 }

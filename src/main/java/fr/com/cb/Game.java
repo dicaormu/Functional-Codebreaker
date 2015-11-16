@@ -12,6 +12,7 @@ import static java.util.stream.Collectors.joining;
 public class Game {
 
     private final String number;
+    private String lastGuess;
 
     private Game(String number) {
         this.number = number;
@@ -26,13 +27,14 @@ public class Game {
     }
 
     public String guessNumber(String guess) {
-        final Map<Character, String> map = new HashMap();
+        lastGuess = guess;
+        final Map<Character, String> map = new HashMap<>();
         for (int i = 0; i < guess.length(); i++) {
             char guessChar = guess.charAt(i);
             char actualChar = number.charAt(i);
             String answerState = CustomProcessor.FINALIZER;
             if (GameLogic.notSamePositionNorPresent.test(guessChar, map)) {
-                answerState = GameLogic.assingSymbol.apply(number, guessChar, actualChar);
+                answerState = GameLogic.assignSymbol.apply(number, guessChar, actualChar);
             }
             map.put(guessChar, answerState);
         }
@@ -40,8 +42,14 @@ public class Game {
                 .collect(joining());
     }
 
+
+    public boolean isWin() {
+        return lastGuess != null && lastGuess.equals(number);
+    }
+
     public String getNumber() {
         return number;
     }
+
 
 }
